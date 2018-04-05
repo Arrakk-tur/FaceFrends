@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 site = "https://www.facebook.com/profile.php?id=100008533423640"
-Umail = "skljar.k@zoho.eu"
-Upas = "Gtynfrkm12"
+Umail = ""
+Upas = ""
 
 
 # Login Page (by ID)
