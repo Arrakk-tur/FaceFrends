@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from selenium import webdriver
 
-import pytest
+import time
 import Var as v
 
 
@@ -20,12 +17,29 @@ def test_FaceFrendsCalc(driver):
     wd.find_element_by_css_selector(v.ProfPage).click()
     wd.find_element_by_css_selector(v.druzijaB).click()
     assert wd.find_element_by_id(v.FriendsH)
-    if EC.presence_of_element_located(By.CLASS_NAME, v.uiHeader):
-        ActionChains(wd).send_keys(Keys.END).perform()
-    else:
-        frList = wd.find_element_by_id(v.FriendsList)
-        print frList
-        frLi = frList.find_elements_by_tag("ul")
-        print frLi
+    # if EC.presence_of_element_located(By.CLASS_NAME, v.uiHeader):
+    #     ActionChains(wd).send_keys(Keys.END).perform()
+    # else:
+    SCROLL_PAUSE_TIME = 0.5
+
+    # Get scroll height
+    last_height = wd.execute_script("return document.body.scrollHeight")
+
+    while True:
+        # Scroll down to bottom
+        wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+        # Wait to load page
+        time.sleep(SCROLL_PAUSE_TIME)
+
+        # Calculate new scroll height and compare with last scroll height
+        new_height = wd.execute_script("return document.body.scrollHeight")
+        if new_height == last_height:
+            break
+        last_height = new_height
+    frList = wd.find_element_by_id(v.FriendsList)
+    print frList
+    frLi = frList.find_elements_by_tag("ul")
+    print frLi
     # frCount = len(frLi)
     # print frCount
