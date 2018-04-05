@@ -18,4 +18,4 @@ ProfPage = "#u_0_a > div:nth-child(1) > div:nth-child(1) > div > a" #css_selecto
 druzijaB = "ul.clearfix > li:nth-of-type(3) > a" #css_selector
 FriendsH = "medley_header_friends"
 uiHeader = "mbm _5vf sectionHeader _4khu"
-FriendsList = "u_fetchstream_2_8"
+FriendsList = "pagelet_timeline_app_collection_100008533423640:2356318349:2"

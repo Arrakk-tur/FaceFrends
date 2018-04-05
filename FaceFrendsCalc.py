@@ -20,7 +20,7 @@ def test_FaceFrendsCalc(driver):
     # if EC.presence_of_element_located(By.CLASS_NAME, v.uiHeader):
     #     ActionChains(wd).send_keys(Keys.END).perform()
     # else:
-    SCROLL_PAUSE_TIME = 0.5
+    SCROLL_PAUSE_TIME = 1.5
 
     # Get scroll height
     last_height = wd.execute_script("return document.body.scrollHeight")
@@ -38,8 +38,6 @@ def test_FaceFrendsCalc(driver):
             break
         last_height = new_height
     frList = wd.find_element_by_id(v.FriendsList)
-    print frList
-    frLi = frList.find_elements_by_tag("ul")
-    print frLi
-    # frCount = len(frLi)
-    # print frCount
+    frLi = frList.find_elements_by_tag_name("li")
+    frCount = len(frLi)
+    print frCount
